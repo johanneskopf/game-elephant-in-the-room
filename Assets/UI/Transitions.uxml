@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/transitions.uss?fileID=7433441132597879392&amp;guid=df5dac0c1e228194491b1031aa218511&amp;type=3#transitions" />
+    <ui:VisualElement name="outerContainer" style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="leftWing" class="hide-left hide-anim" style="flex-grow: 1; background-color: rgb(0, 0, 0);" />
+        <ui:VisualElement name="rightWing" class="hide-right hide-anim" style="flex-grow: 1; background-color: rgb(0, 0, 0);" />
+    </ui:VisualElement>
+</ui:UXML>

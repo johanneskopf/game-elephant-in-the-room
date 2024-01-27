@@ -1,0 +1,13 @@
+.hide-left {
+    translate: -360px 0;
+}
+
+.hide-anim {
+    transition-property: translate;
+    transition-timing-function: ease-in-out-sine;
+    transition-duration: 1.5s;
+}
+
+.hide-right {
+    translate: 360px 0;
+}
