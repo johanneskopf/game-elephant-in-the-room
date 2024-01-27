@@ -142,10 +142,9 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
 
     public void OnCollisionEnter2DEvent(Collision2D collision)
     {
-        if (grabbedObject == null && grabbing && collision.otherRigidbody.gameObject.CompareTag("Grabbable") &&
-            collision.otherRigidbody.gameObject == _trunkTip)
+        if (grabbedObject == null && grabbing && collision.rigidbody.gameObject.CompareTag("Grabbable"))
         {
-            Grab(collision.otherRigidbody);
+            Grab(collision.rigidbody);
         }
     }
 }

@@ -8216,6 +8216,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7885f2c6-6158-4988-bc80-3702c55069f5
     m_ActionName: 'Player/Jump[/XInputControllerWindows2/buttonSouth,/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1549780756}
+        m_TargetAssemblyTypeName: TrunkHaver, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9f73061f-6e75-4c8f-b5b6-5a31de6a056e
+    m_ActionName: 'Player/Grab[/XInputControllerWindows/rightTrigger,/Keyboard/rightCtrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -8879,7 +8895,7 @@ GameObject:
   - component: {fileID: 1874658087}
   m_Layer: 0
   m_Name: GrabbableCube
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
