@@ -1,9 +1,10 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class TrunkHaver : MonoBehaviour
+public class TrunkHaver : MonoBehaviour, ICollider2DListener
 {
     public float trunkFlexibility = 10f;
     public float moveRadius = 1f;
@@ -15,8 +16,11 @@ public class TrunkHaver : MonoBehaviour
     public Rigidbody2D attachPoint;
 
     private BoxCollider2D[] _trunkElements;
+    private GameObject _trunkTip;
     private Vector3 _relativeNeutralPosition;
     private Vector2 _trunkMovementInput = Vector2.zero;
+    private bool grabbing = false;
+    private Rigidbody2D grabbedObject = null;
 
     public GameObject debugSphere;
 
@@ -54,6 +58,9 @@ public class TrunkHaver : MonoBehaviour
             prev = boxCollider2D;
         }
 
+        _trunkTip = _trunkElements.Last().gameObject;
+        _trunkTip.AddComponent<Collider2DBridge>().Initialize(this);
+
         _relativeNeutralPosition =
             RelativeCurrentTrunkEndPos() + transform.InverseTransformDirection(relativeStartOffset);
     }
@@ -63,14 +70,44 @@ public class TrunkHaver : MonoBehaviour
         _trunkMovementInput = ctx.ReadValue<Vector2>();
     }
 
+    public void OnGrab(InputAction.CallbackContext ctx)
+    {
+        grabbing = ctx.ReadValueAsButton();
+        if (!grabbing)
+        {
+            Ungrab();
+        }
+    }
+
+    private void Ungrab()
+    {
+        if (grabbedObject != null)
+        {
+            Destroy(_trunkTip.GetComponent<FixedJoint2D>());
+            grabbedObject = null;
+        }
+    }
+
+    private void Grab(Rigidbody2D rb)
+    {
+        var j = _trunkTip.AddComponent<FixedJoint2D>();
+        j.connectedBody = rb;
+        grabbedObject = rb;
+    }
+
     private Vector3 RelativeCurrentTrunkEndPos()
     {
-        var lastTrunkElement = _trunkElements.Last();
+        var lastTrunkElement = TrunkTip();
         var colliderSpaceSize = new Vector3(lastTrunkElement.size.x, lastTrunkElement.size.y, lastTrunkElement.size.y);
         var colliderSpaceOffset = new Vector3(colliderSpaceSize.x / 2f, colliderSpaceSize.y, colliderSpaceSize.z / 2f);
         var worldSpacePos = lastTrunkElement.transform.TransformPoint(colliderSpaceOffset);
 
         return transform.InverseTransformPoint(worldSpacePos);
+    }
+
+    private BoxCollider2D TrunkTip()
+    {
+        return _trunkElements.Last();
     }
 
     public void Update()
@@ -100,6 +137,15 @@ public class TrunkHaver : MonoBehaviour
         foreach (var boxCollider2D in _trunkElements)
         {
             boxCollider2D.attachedRigidbody.gravityScale = gs;
+        }
+    }
+
+    public void OnCollisionEnter2DEvent(Collision2D collision)
+    {
+        if (grabbedObject == null && grabbing && collision.otherRigidbody.gameObject.CompareTag("Grabbable") &&
+            collision.otherRigidbody.gameObject == _trunkTip)
+        {
+            Grab(collision.otherRigidbody);
         }
     }
 }
