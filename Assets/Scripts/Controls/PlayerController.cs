@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput = Vector2.zero;
     private bool _isJumping = false;
 
+    public TrunkHaver trunkHaver;
+
     public void OnMovement(InputAction.CallbackContext ctx)
     {
         _movementInput = ctx.ReadValue<Vector2>();
@@ -24,6 +26,15 @@ public class PlayerController : MonoBehaviour
         var targetVelocity = _movementInput.x * _movementSpeedModifier;
 
         myRb.AddForceX(targetVelocity - myRb.velocityX, ForceMode2D.Impulse);
+
+        if (trunkHaver != null)
+        {
+            if (_movementInput.x > 0.5)
+                trunkHaver.FaceRight(true);
+
+            if (_movementInput.x < -0.5)
+                trunkHaver.FaceRight(false);
+        }
 
         if (_isJumping)
         {

@@ -5982,7 +5982,6 @@ MonoBehaviour:
   trunkDamping: 0.3
   gravityScale: -0.3
   attachPoint: {fileID: 415805629}
-  debugSphere: {fileID: 0}
 --- !u!114 &1549780757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6118,6 +6117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeedModifier: 6
+  trunkHaver: {fileID: 1549780756}
 --- !u!43 &1655406724
 Mesh:
   m_ObjectHideFlags: 0

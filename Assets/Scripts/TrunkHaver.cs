@@ -22,8 +22,7 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
     private Vector2 _trunkMovementInput = Vector2.zero;
     private bool grabbing = false;
     private Rigidbody2D grabbedObject = null;
-
-    public GameObject debugSphere;
+    private bool facingRight = true;
 
     public void Start()
     {
@@ -131,11 +130,6 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
             Color.red);
 
         attachPoint.velocity = GetComponent<Rigidbody2D>().velocity;
-
-        if (debugSphere != null)
-        {
-            debugSphere.transform.position = transform.TransformPoint(RelativeCurrentTrunkEndPos());
-        }
     }
 
     private void SetGravity(float gs)
@@ -151,6 +145,37 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
         if (grabbedObject == null && grabbing && collision.rigidbody.gameObject.CompareTag("Grabbable"))
         {
             Grab(collision.rigidbody);
+        }
+    }
+
+    public void FaceRight(bool right)
+    {
+        if (facingRight != right)
+        {
+            Flip();
+        }
+        facingRight = right;
+    }
+
+    private void Flip()
+    {
+        gameObject.transform.Find("Model").transform.Rotate(0, 180, 0);
+
+        var localScale = attachPoint.transform.localScale;
+        localScale.x *= -1;
+        attachPoint.transform.localScale = localScale;
+
+        var localPos = attachPoint.transform.localPosition;
+        localPos.x *= -1;
+        attachPoint.transform.localPosition = localPos;
+
+        _relativeNeutralPosition.x *= -1;
+
+        if (grabbedObject != null)
+        {
+            var relativePos = grabbedObject.transform.position - transform.position;
+            relativePos.x *= -1;
+            grabbedObject.transform.position = transform.position + relativePos;
         }
     }
 }
