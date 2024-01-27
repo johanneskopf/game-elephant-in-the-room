@@ -25,7 +25,7 @@ public class SetRadiusToRendererBounds : MonoBehaviour
             };
             targets.Add(target);
         }
-        CinemachineTargetGroup targetGroup = GetComponent<CinemachineTargetGroup>();
+        var targetGroup = GetComponent<CinemachineTargetGroup>();
         targetGroup.m_Targets = targets.ToArray();
     }
 }
