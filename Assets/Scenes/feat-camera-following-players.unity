@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -1.7300003, y: 4.2649946, z: -10.804271}
+  m_LocalPosition: {x: -2.4900002, y: 3.95819, z: -9.659258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -689,7 +689,7 @@ Transform:
   m_GameObject: {fileID: 847195674}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -1.7300003, y: 4.2649946, z: -10.804271}
+  m_LocalPosition: {x: -2.4900002, y: 3.95819, z: -9.659258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1010,6 +1010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018658187}
   - component: {fileID: 2018658186}
+  - component: {fileID: 2018658188}
   m_Layer: 0
   m_Name: Target Group
   m_TagString: Untagged
@@ -1032,13 +1033,7 @@ MonoBehaviour:
   m_PositionMode: 0
   m_RotationMode: 0
   m_UpdateMethod: 2
-  m_Targets:
-  - target: {fileID: 334122588}
-    weight: 1
-    radius: 3
-  - target: {fileID: 863541315}
-    weight: 1
-    radius: 3
+  m_Targets: []
 --- !u!4 &2018658187
 Transform:
   m_ObjectHideFlags: 0
@@ -1048,12 +1043,28 @@ Transform:
   m_GameObject: {fileID: 2018658185}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2344248, y: 1.37, z: 0}
+  m_LocalPosition: {x: -2.49, y: 1.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018658188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018658185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e660938a895a4f141b394821afa65fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerRenderer:
+  - {fileID: 334122586}
+  - {fileID: 863541313}
+  RadiusOffset: 2
 --- !u!1 &2034545795
 GameObject:
   m_ObjectHideFlags: 0

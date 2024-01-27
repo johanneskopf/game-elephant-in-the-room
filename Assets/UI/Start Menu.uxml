@@ -1,0 +1,39 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/allTheStyles.uss?fileID=7433441132597879392&amp;guid=6fbdfa6cc45873945b3686e0d57405dc&amp;type=3#allTheStyles" />
+    <ui:VisualElement name="outermostContainer" style="flex-direction: row; flex-grow: 1;">
+        <ui:VisualElement name="left" style="width: 35%;">
+            <ui:VisualElement name="elevatorPanelBG" style="flex-grow: 1; background-color: rgb(138, 76, 45); align-items: center; justify-content: flex-start;">
+                <ui:VisualElement name="elevatorPanelTopFill" style="height: 12%;" />
+                <ui:VisualElement name="elevatorPanel" style="width: 80%; height: 80%; background-color: rgb(111, 104, 104); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; align-items: center;">
+                    <ui:VisualElement name="overloadContainer" style="height: 12%; align-items: center; justify-content: center; width: 100%;">
+                        <OverloadBar name="overloadBar" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="warningTextContainer" style="height: 36%; align-items: center; flex-direction: column; width: 90%; justify-content: center; background-color: rgb(220, 220, 220); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                        <ui:VisualElement name="maxCapContainer" style="flex-direction: row; width: 100%; flex-grow: 1; align-items: center; justify-content: flex-start; background-color: rgb(255, 162, 0);">
+                            <ui:VisualElement name="maxCapIcon" style="background-image: url(&apos;project://database/Assets/UI/UnityDefaultRuntimeTheme%201.tss?fileID=4584671053970592468&amp;guid=a3b80a2fb4c361f41b7d0d1a4c10bc1e&amp;type=3#console.warnicon&apos;); flex-grow: 0.5; height: 100%; width: 80%;" />
+                            <ui:Label text="Max. Capacity:" name="maxCapText" style="-unity-text-align: middle-left;" />
+                        </ui:VisualElement>
+                        <ui:Label text="20 people" name="pplText" style="flex-shrink: 1;" />
+                        <ui:Label text="1200kg" name="weightText" style="flex-shrink: 1;" />
+                        <ui:Label text="0 elephants" name="elephantText" style="flex-shrink: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="anotherFill" style="height: 10%;" />
+                    <ui:VisualElement name="buttonsContainer" style="flex-grow: 1; width: 80%; flex-direction: row;">
+                        <ui:VisualElement name="btnsLeft" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                            <ui:Button name="btnPlay" class="elevatorBtn" style="background-image: url(&apos;project://database/Assets/UI/UnityDefaultRuntimeTheme%201.tss?fileID=-1087164816274819069&amp;guid=a3b80a2fb4c361f41b7d0d1a4c10bc1e&amp;type=3#arrow-right@2x&apos;);" />
+                            <ui:Button text="&#10;" name="btnQuit" class="elevatorBtn" style="background-image: url(&apos;project://database/Assets/UI/UnityDefaultRuntimeTheme%201.tss?fileID=5923138177525885446&amp;guid=a3b80a2fb4c361f41b7d0d1a4c10bc1e&amp;type=3#Remove@2x&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="btnsRight" style="flex-grow: 1; justify-content: space-around; align-items: center;">
+                            <ui:Button text="S" name="btnSound" class="elevatorBtn button-active" />
+                            <ui:Button text="M" name="btnMusic" class="elevatorBtn button-active" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="panelBottomFill" style="height: 3%;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="right" style="flex-grow: 1;">
+            <ui:Label text="Elephant In The Room" name="titleText" class="title-text" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
