@@ -20,14 +20,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        foreach (var rb in GetComponentsInChildren<Rigidbody2D>())
-        {
-            rb.velocityX = _movementInput.x * _movementSpeedModifier;
-        }
+        var myRb = GetComponent<Rigidbody2D>();
+        var targetVelocity = _movementInput.x * _movementSpeedModifier;
+
+        myRb.AddForceX(targetVelocity - myRb.velocityX, ForceMode2D.Impulse);
 
         if (_isJumping)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 40f), ForceMode2D.Impulse);
             _isJumping = false;
         }
     }

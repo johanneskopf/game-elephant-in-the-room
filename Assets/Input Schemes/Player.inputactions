@@ -9,7 +9,7 @@
                     "name": "Movement",
                     "type": "Value",
                     "id": "60a6d32a-2ddd-489f-84c2-5c41dd2b6f46",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -18,7 +18,7 @@
                     "name": "TrunkMovement",
                     "type": "Value",
                     "id": "03832ce0-d273-4f1d-a947-6a884692b008",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
