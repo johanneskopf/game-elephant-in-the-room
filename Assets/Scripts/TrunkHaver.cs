@@ -154,11 +154,12 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
         {
             Flip();
         }
-        facingRight = right;
     }
 
     private void Flip()
     {
+        if (grabbedObject != null) return;
+
         gameObject.transform.Find("Model").transform.Rotate(0, 180, 0);
 
         var localScale = attachPoint.transform.localScale;
@@ -171,11 +172,6 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
 
         _relativeNeutralPosition.x *= -1;
 
-        if (grabbedObject != null)
-        {
-            var relativePos = grabbedObject.transform.position - transform.position;
-            relativePos.x *= -1;
-            grabbedObject.transform.position = transform.position + relativePos;
-        }
+        facingRight = !facingRight;
     }
 }
