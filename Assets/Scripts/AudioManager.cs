@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Play sounds via the "_soundSource" AudioSource
+/// and music via the "_musicSource" AudioSource
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
@@ -22,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Elephant")]
     [SerializeField]
-    private AudioClip _elephantSomeSound;
+    private AudioClip _elephantTrumpet01;
     // TODO elephant sounds go here
 
     [Header("Buttons")]
@@ -34,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -78,5 +82,10 @@ public class AudioManager : MonoBehaviour
     public void PlayButtonPress()
     {
         _soundSource.PlayOneShot(_buttonPress);
+    }
+
+    public void PlayElephantTrumpet()
+    {
+        _soundSource.PlayOneShot(_elephantTrumpet01);
     }
 }

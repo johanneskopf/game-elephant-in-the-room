@@ -636,7 +636,7 @@ MonoBehaviour:
   _elevatorOpen: {fileID: 8300000, guid: 99625d0c4d52b1444a7e338758fda88d, type: 3}
   _elevatorClose: {fileID: 8300000, guid: 99625d0c4d52b1444a7e338758fda88d, type: 3}
   _elevatorDing: {fileID: 8300000, guid: 8341798b081fa2849a4c590d4274ab60, type: 3}
-  _elephantSomeSound: {fileID: 0}
+  _elephantTrumpet01: {fileID: 8300000, guid: 70d7f1ee611b2b646aad8336888f2edb, type: 3}
   _buttonFocus: {fileID: 8300000, guid: aae25b98c1ce28747b607424c5375ad6, type: 3}
   _buttonPress: {fileID: 8300000, guid: 460f5f40951610c479c5b8031cf7b7ca, type: 3}
 --- !u!4 &791475009

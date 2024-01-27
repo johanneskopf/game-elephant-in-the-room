@@ -137,6 +137,7 @@ public class StartMenuController : MonoBehaviour
         Debug.Log("Start Game");
         PressedPlay?.Invoke();
         AudioManager.Instance.PlayButtonPress();
+        AudioManager.Instance.PlayElephantTrumpet();
     }
 
     private void OnClickedQuit()
