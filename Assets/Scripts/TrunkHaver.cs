@@ -10,6 +10,7 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
     public float moveRadius = 1f;
     [FormerlySerializedAs("offset")] public Vector2 relativeStartOffset = Vector2.zero;
     public float trunkStrength = 1f;
+    public float trunkPower = 5f;
     [Range(0f, 1f)] public float trunkDamping = 1f;
     [Range(-1f, 0f)] public float gravityScale = -1f;
 
@@ -21,12 +22,11 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
     private Vector2 _trunkMovementInput = Vector2.zero;
     private bool grabbing = false;
     private Rigidbody2D grabbedObject = null;
-
-    public GameObject debugSphere;
+    private bool facingRight = true;
 
     public void Start()
     {
-        _trunkElements = GetComponentsInChildren<BoxCollider2D>().Where(x => x.gameObject != gameObject)
+        _trunkElements = attachPoint.GetComponentsInChildren<BoxCollider2D>().Where(x => x.gameObject != gameObject)
             .ToArray();
         Debug.Log("Found " + _trunkElements.Length + " trunk elements");
         BoxCollider2D prev = null;
@@ -34,7 +34,6 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
         {
             Debug.Log("Adding hinge joint to " + boxCollider2D.gameObject.name);
             var hinge = boxCollider2D.gameObject.AddComponent<HingeJoint2D>();
-            hinge.anchor = new Vector2(boxCollider2D.size.x / 2f, 0f);
             if (prev != null)
             {
                 hinge.connectedBody = prev.attachedRigidbody;
@@ -45,6 +44,7 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
                 hinge.useLimits = true;
             }
 
+            hinge.anchor = new Vector2(0f, 0f);
             hinge.useLimits = true;
 
             var limits = hinge.limits;
@@ -52,8 +52,9 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
             limits.max = hinge.jointAngle + trunkFlexibility;
             hinge.limits = limits;
 
-
-            boxCollider2D.attachedRigidbody.gravityScale = 0f;
+            var rb = boxCollider2D.attachedRigidbody;
+            rb.gravityScale = 0f;
+            rb.mass = trunkPower;
 
             prev = boxCollider2D;
         }
@@ -99,7 +100,7 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
     {
         var lastTrunkElement = TrunkTip();
         var colliderSpaceSize = new Vector3(lastTrunkElement.size.x, lastTrunkElement.size.y, lastTrunkElement.size.y);
-        var colliderSpaceOffset = new Vector3(colliderSpaceSize.x / 2f, colliderSpaceSize.y, colliderSpaceSize.z / 2f);
+        var colliderSpaceOffset = new Vector3(colliderSpaceSize.x, 0f, colliderSpaceSize.z / 2f);
         var worldSpacePos = lastTrunkElement.transform.TransformPoint(colliderSpaceOffset);
 
         return transform.InverseTransformPoint(worldSpacePos);
@@ -117,19 +118,18 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
 
         SetGravity(_trunkMovementInput.y * -gravityScale);
 
-        var worldSpaceVectorMoveDir =
-            transform.TransformVector(relativeTargetPos - RelativeCurrentTrunkEndPos());
-        var worldSpaceVelocity = _trunkElements.Last().attachedRigidbody.velocity;
+        var worldSpaceVectorMoveDir = transform.TransformVector(relativeTargetPos - RelativeCurrentTrunkEndPos());
+        var worldSpaceVelocity =
+            _trunkElements.Last().attachedRigidbody.velocity - GetComponent<Rigidbody2D>().velocity;
         var worldSpaceForce = (worldSpaceVectorMoveDir - (Vector3)worldSpaceVelocity * trunkDamping) * trunkStrength;
-        _trunkElements.Last().attachedRigidbody.AddForce(worldSpaceForce);
+        _trunkElements.Last().attachedRigidbody.AddForce(worldSpaceForce, ForceMode2D.Impulse);
 
-        Debug.DrawLine(transform.TransformPoint(RelativeCurrentTrunkEndPos()),
-            transform.TransformPoint(relativeTargetPos), Color.red);
+        Debug.DrawLine(
+            transform.TransformPoint(RelativeCurrentTrunkEndPos()),
+            transform.TransformPoint(RelativeCurrentTrunkEndPos() + worldSpaceForce),
+            Color.red);
 
-        if (debugSphere != null)
-        {
-            debugSphere.transform.position = transform.TransformPoint(RelativeCurrentTrunkEndPos());
-        }
+        attachPoint.velocity = GetComponent<Rigidbody2D>().velocity;
     }
 
     private void SetGravity(float gs)
@@ -145,6 +145,37 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
         if (grabbedObject == null && grabbing && collision.rigidbody.gameObject.CompareTag("Grabbable"))
         {
             Grab(collision.rigidbody);
+        }
+    }
+
+    public void FaceRight(bool right)
+    {
+        if (facingRight != right)
+        {
+            Flip();
+        }
+        facingRight = right;
+    }
+
+    private void Flip()
+    {
+        gameObject.transform.Find("Model").transform.Rotate(0, 180, 0);
+
+        var localScale = attachPoint.transform.localScale;
+        localScale.x *= -1;
+        attachPoint.transform.localScale = localScale;
+
+        var localPos = attachPoint.transform.localPosition;
+        localPos.x *= -1;
+        attachPoint.transform.localPosition = localPos;
+
+        _relativeNeutralPosition.x *= -1;
+
+        if (grabbedObject != null)
+        {
+            var relativePos = grabbedObject.transform.position - transform.position;
+            relativePos.x *= -1;
+            grabbedObject.transform.position = transform.position + relativePos;
         }
     }
 }
