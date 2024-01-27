@@ -1,45 +1,60 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+namespace Controls
 {
-    [SerializeField, Min(0)] private float _movementSpeedModifier = 2f;
-
-    private Vector2 _movementInput = Vector2.zero;
-    private bool _isJumping = false;
-
-    public TrunkHaver trunkHaver;
-
-    public void OnMovement(InputAction.CallbackContext ctx)
+    public class PlayerController : MonoBehaviour
     {
-        _movementInput = ctx.ReadValue<Vector2>();
-    }
+        [SerializeField, Min(0)] private float _movementSpeedModifier = 2f;
 
-    public void OnJump(InputAction.CallbackContext ctx)
-    {
-        _isJumping = ctx.ReadValueAsButton();
-    }
+        private Vector2 _movementInput = Vector2.zero;
+        private bool _isJumping = false;
+        private bool jumpDisabled = false;
 
-    private void Update()
-    {
-        var myRb = GetComponent<Rigidbody2D>();
-        var targetVelocity = _movementInput.x * _movementSpeedModifier;
+        public TrunkHaver trunkHaver;
+        public float jumpStrength = 50f;
 
-        myRb.AddForceX(targetVelocity - myRb.velocityX, ForceMode2D.Impulse);
-
-        if (trunkHaver != null)
+        public void OnMovement(InputAction.CallbackContext ctx)
         {
-            if (_movementInput.x > 0.5)
-                trunkHaver.FaceRight(true);
-
-            if (_movementInput.x < -0.5)
-                trunkHaver.FaceRight(false);
+            _movementInput = ctx.ReadValue<Vector2>();
         }
 
-        if (_isJumping)
+        public void OnJump(InputAction.CallbackContext ctx)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 40f), ForceMode2D.Impulse);
-            _isJumping = false;
+            _isJumping = ctx.ReadValueAsButton();
+        }
+
+        private void Update()
+        {
+            var myRb = GetComponent<Rigidbody2D>();
+            var targetVelocity = _movementInput.x * _movementSpeedModifier;
+
+            myRb.AddForceX(targetVelocity - myRb.velocityX, ForceMode2D.Impulse);
+
+            if (trunkHaver != null)
+            {
+                if (_movementInput.x > 0.5)
+                    trunkHaver.FaceRight(true);
+
+                if (_movementInput.x < -0.5)
+                    trunkHaver.FaceRight(false);
+            }
+
+            if (_isJumping)
+            {
+                if (!jumpDisabled)
+                {
+                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
+                    jumpDisabled = true;
+                }
+
+                _isJumping = false;
+            }
+        }
+
+        public void EnableJumpingAgain()
+        {
+            jumpDisabled = false;
         }
     }
 }
