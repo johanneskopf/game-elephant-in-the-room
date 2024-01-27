@@ -61,6 +61,11 @@
     font-size: 36px;
     -unity-text-align: middle-center;
     -unity-font-style: bold;
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Cakecafe.ttf?fileID=12800000&guid=94acd718b07e1c84b92acd1270c82276&type=3#Cakecafe');
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(255, 223, 0);
+    color: rgb(51, 51, 51);
+    margin-top: 24px;
 }
 
 .title-anim {
@@ -124,10 +129,6 @@
     border-left-width: 2px;
 }
 
-.button-active {
-    background-color: rgb(33, 218, 89);
-}
-
 .overload-bar-inner-style-2 {
     transition-property: background-color;
     transition-duration: 0.5s;
@@ -143,4 +144,68 @@
 
 .text-bold {
     -unity-font-style: bold;
+}
+
+.button-active {
+    background-color: rgb(33, 218, 89);
+}
+
+.music-btn-active {
+    background-image: url('project://database/Assets/UI/Sprites/sound-on.png?fileID=2800000&guid=349b96265d4560045b13357cee2bd02a&type=3#sound-on');
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 1px;
+    left: 3px;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+
+.music-btn-inactive {
+    background-image: url('project://database/Assets/UI/Sprites/sound-off.png?fileID=2800000&guid=acf94d56373393d4c815a41e2bd57374&type=3#sound-off');
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 1px;
+    left: 3px;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+
+.sound-btn-active {
+    background-image: url('project://database/Assets/UI/Sprites/speaker.png?fileID=2800000&guid=a2a5fd03d890df1489ee4b10b8da2fe0&type=3#speaker');
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 2px;
+    left: 3px;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+
+.sound-btn-inactive {
+    background-image: url('project://database/Assets/UI/Sprites/speaker-off.png?fileID=2800000&guid=3dc2528ad4f81a1449c1d524b0be4a5b&type=3#speaker-off');
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 2px;
+    left: 3px;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+
+.play-button-bg {
+    background-image: url('project://database/Assets/UI/Sprites/play-button.png?fileID=2800000&guid=471761b274111064bbf40b0df2d9fb91&type=3#play-button');
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 2px;
+    left: 3px;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+
+.quit-button-bg {
+    background-image: url('project://database/Assets/UI/Sprites/play-button.png?fileID=2800000&guid=471761b274111064bbf40b0df2d9fb91&type=3#play-button');
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 2px;
+    left: 3px;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
 }

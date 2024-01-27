@@ -16,14 +16,35 @@ public class StartMenuController : MonoBehaviour
     private Button _soundButton;
     private Button _musicButton;
 
+    private VisualElement _musicImg;
+    private VisualElement _soundImg;
+
     private OverloadBar _overloadBar;
 
     public event Action PressedPlay;
+
+    [SerializeField]
+    private Texture _musicOnTexture;
+
+    [SerializeField]
+    private MoveElephantIntoElevator _elephantMover;
 
     private void Awake()
     {
         _startMenuUIDoc = GetComponent<UIDocument>();
         FetchComponents();
+    }
+
+    private void Start()
+    {
+        SceneLoader.Instance.StartLoadingScene += DisableInput;
+        _elephantMover.ElephantStartedMoving += DisableInput;   
+    }
+
+    private void OnDestroy()
+    {
+        SceneLoader.Instance.StartLoadingScene -= DisableInput;
+        _elephantMover.ElephantStartedMoving -= DisableInput;
     }
 
     private void FetchComponents()
@@ -34,6 +55,10 @@ public class StartMenuController : MonoBehaviour
         _soundButton = root.Q<Button>("btnSound");
         _musicButton = root.Q<Button>("btnMusic");
         _overloadBar = root.Q<OverloadBar>("overloadBar");
+
+        _musicImg = root.Q("musicBG");
+        _soundImg = root.Q("soundBG");
+
 
 
 #if UNITY_WEBGL
@@ -51,15 +76,41 @@ public class StartMenuController : MonoBehaviour
         _musicButton.clicked += OnToggleMusic;
     }
 
+
+    private void DisableInput()
+    {
+        _playButton.focusable = false;
+        _quitButton.focusable = false;
+        _musicButton.focusable = false;
+        _soundButton.focusable = false;
+
+        _playButton.clicked -= OnClickPlay;
+        _quitButton.clicked -= OnClickedQuit;
+        _musicButton.clicked -= OnToggleMusic;
+        _soundButton.clicked -= OnToggleSound;
+
+
+        _startMenuUIDoc.rootVisualElement.panel.visualTree.RegisterCallback<KeyDownEvent>(e => e.StopImmediatePropagation(), TrickleDown.TrickleDown);
+    }
+
+
     private void OnToggleMusic()
     {
         _musicIsOn = !_musicIsOn;
         AudioManager.Instance.ToggleMusic(_musicIsOn);
         AudioManager.Instance.PlayButtonPress();
         if (_musicIsOn)
+        {
             _musicButton.AddToClassList("button-active");
+            _musicImg.AddToClassList("music-btn-active");
+            _musicImg.RemoveFromClassList("music-btn-inactive");
+        }
         else
+        {
             _musicButton.RemoveFromClassList("button-active");
+            _musicImg.AddToClassList("music-btn-inactive");
+            _musicImg.RemoveFromClassList("music-btn-active");
+        }
     }
 
     private void OnToggleSound()
@@ -68,9 +119,17 @@ public class StartMenuController : MonoBehaviour
         AudioManager.Instance.ToggleSound(_soundIsOn);
         AudioManager.Instance.PlayButtonPress();
         if (_soundIsOn)
+        {
             _soundButton.AddToClassList("button-active");
+            _soundImg.AddToClassList("sound-btn-active");
+            _soundImg.RemoveFromClassList("sound-btn-inactive");
+        }
         else
+        {
             _soundButton.RemoveFromClassList("button-active");
+            _soundImg.AddToClassList("sound-btn-inactive");
+            _soundImg.RemoveFromClassList("sound-btn-active");
+        }
     }
 
     private void OnClickPlay()

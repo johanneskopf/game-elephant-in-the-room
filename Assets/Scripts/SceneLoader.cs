@@ -11,7 +11,14 @@ public class SceneLoader : MonoBehaviour
     [SerializeField, Min(0)]
     private float _timeBetweenOpenClose = 0.5f;
 
+    [SerializeField, Min(0)]
+    private float _waitAfterStartup = 1f;
+
     private SceneTransitions _transitions;
+
+    public event Action StartLoadingScene;
+    public event Action FinishedLoadingScene;
+
 
     private void Awake()
     {
@@ -25,13 +32,24 @@ public class SceneLoader : MonoBehaviour
         _transitions = GetComponentInChildren<SceneTransitions>();
     }
 
+
+    private IEnumerator Start()
+    {
+        _transitions.Hide(); // "Close elevator door" on scene Startup
+        yield return new WaitForSeconds(_waitAfterStartup);
+        StartCoroutine(_transitions.PlayOpeningAnimationCR());
+    }
+
+
     public IEnumerator LoadScene(int levelID)
     {
+        StartLoadingScene?.Invoke();
         yield return StartCoroutine(_transitions.PlayClosingAnimationCR());
         yield return StartCoroutine(LoadeSceneAsync(levelID));
         AudioManager.Instance.PlayElevatorDing();
         yield return new WaitForSeconds(_timeBetweenOpenClose);
         yield return StartCoroutine(_transitions.PlayOpeningAnimationCR());
+        FinishedLoadingScene?.Invoke();
     }
 
     private IEnumerator LoadeSceneAsync(int levelID)

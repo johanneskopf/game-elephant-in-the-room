@@ -19,6 +19,12 @@ public class SceneTransitions : MonoBehaviour
         _rightWing = _transitionOverlayUIDoc.rootVisualElement.Q("rightWing");
     }
 
+    public void Hide()
+    {
+        _leftWing.RemoveFromClassList("hide-left");
+        _rightWing.RemoveFromClassList("hide-right");
+    }
+
     public IEnumerator PlayOpeningAnimationCR()
     {
         AudioManager.Instance.PlayElevatorOpen();

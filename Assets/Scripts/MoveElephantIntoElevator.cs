@@ -14,6 +14,7 @@ public class MoveElephantIntoElevator : MonoBehaviour
     StartMenuController _controller;
 
     public event Action ElephantIsInElevator;
+    public event Action ElephantStartedMoving;
     StartMenuOverloadBar _bar;
 
     private void Start()
@@ -25,6 +26,7 @@ public class MoveElephantIntoElevator : MonoBehaviour
 
     private void MoveIntoElevator()
     {
+        ElephantStartedMoving?.Invoke();
         StartCoroutine(MoveIntoElevatorCR());
     }
 

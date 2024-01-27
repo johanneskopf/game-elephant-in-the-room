@@ -23,6 +23,13 @@ public class StartMenuOverloadBar : MonoBehaviour
         _stuff.ElephantIsInElevator += OnElephantIsIn;
     }
 
+
+    private void OnDestroy()
+    {
+        _stuff.ElephantIsInElevator -= OnElephantIsIn;
+
+    }
+
     public void OnElephantIsIn()
     {
         StartCoroutine(ElephantIsInCR());
@@ -36,13 +43,6 @@ public class StartMenuOverloadBar : MonoBehaviour
         _bar.SetFontColor(new Color(0.58f, 0, 0, 1));
         yield return StartCoroutine(FillProgressBar(1)); // fill bar to maximum
         yield return SceneLoader.Instance.LoadLevel(1);
-    }
-
-
-    private void OnDestroy()
-    {
-        _stuff.ElephantIsInElevator -= OnElephantIsIn;
-
     }
 
 
