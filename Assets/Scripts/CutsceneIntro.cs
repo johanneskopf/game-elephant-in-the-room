@@ -34,6 +34,7 @@ public class CutsceneIntro : MonoBehaviour
     List<string> dialogLines2 = new List<string> {
         "Random Person: I am so thirsty!",
         "Random Person: You there, elephants, can you give me some water?",
+        "Random Person: I feel a little stiff today.",
         "Russel and Dussel trumpet.",
         "Russel + Dussel: YES!"
     };
@@ -239,7 +240,7 @@ public class CutsceneIntro : MonoBehaviour
                 Debug.Log("PlayElephantTrumpet 1");
                 AudioManager.Instance.PlayElephantTrumpet();
             }
-            else if (CurrentDialogLine == 2 && CurrentDialogLines == 1)
+            else if (CurrentDialogLine == 3 && CurrentDialogLines == 1)
             {
                 Debug.Log("PlayElephantTrumpet 2");
                 AudioManager.Instance.PlayElephantTrumpet();
