@@ -40,6 +40,7 @@ public class CutsceneIntro : MonoBehaviour
 
     List<string> dialogLines3 = new List<string> {
         "Russel: In this skyscraper, we find a glass of water, don't we?",
+        "Dussel trumpets.",
         "Dussel: YES!",
         "Russel and Dussel go in..",
     };
@@ -231,6 +232,22 @@ public class CutsceneIntro : MonoBehaviour
                 }
                 SetCanvasActive(false, dialogCanvasGroup);
                 return;
+            }
+
+            if(CurrentDialogLine == 3 && CurrentDialogLines == 0)
+            {
+                Debug.Log("PlayElephantTrumpet 1");
+                AudioManager.Instance.PlayElephantTrumpet();
+            }
+            else if (CurrentDialogLine == 2 && CurrentDialogLines == 1)
+            {
+                Debug.Log("PlayElephantTrumpet 2");
+                AudioManager.Instance.PlayElephantTrumpet();
+            }
+            else if (CurrentDialogLine == 1 && CurrentDialogLines == 2)
+            {
+                Debug.Log("PlayElephantTrumpet 3");
+                AudioManager.Instance.PlayElephantTrumpet();
             }
 
             CurrentDialogLine++;
