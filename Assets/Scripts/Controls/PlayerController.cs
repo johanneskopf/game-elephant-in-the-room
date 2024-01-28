@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Controls
 {
@@ -50,6 +51,24 @@ namespace Controls
                 }
 
                 _isJumping = false;
+            }
+        }
+
+        public void RestartLevel(InputAction.CallbackContext ctx)
+        {
+            var restart = ctx.ReadValueAsButton();
+            if (restart)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
+        
+        public void Trumpet(InputAction.CallbackContext ctx)
+        {
+            var trumpet = ctx.ReadValueAsButton();
+            if (trumpet)
+            {
+                AudioManager.Instance.PlayElephantTrumpet();
             }
         }
     }

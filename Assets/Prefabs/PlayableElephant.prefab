@@ -1710,6 +1710,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9f73061f-6e75-4c8f-b5b6-5a31de6a056e
     m_ActionName: 'Player/Grab[/XInputControllerWindows/rightTrigger,/Keyboard/rightCtrl]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 697657037651418793}
+        m_TargetAssemblyTypeName: Controls.PlayerController, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fbcb68b9-559b-47cc-b40d-e634bfbadda0
+    m_ActionName: 'Player/Restart level[/XInputControllerWindows1/start,/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 697657037651418793}
+        m_TargetAssemblyTypeName: Controls.PlayerController, Assembly-CSharp
+        m_MethodName: Trumpet
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a02c6826-863c-47a8-b545-9f60a812ba2a
+    m_ActionName: 'Player/Trumpet[/Keyboard/shift,/XInputControllerWindows1/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

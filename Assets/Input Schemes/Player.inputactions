@@ -40,6 +40,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Restart level",
+                    "type": "Button",
+                    "id": "fbcb68b9-559b-47cc-b40d-e634bfbadda0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Trumpet",
+                    "type": "Button",
+                    "id": "a02c6826-863c-47a8-b545-9f60a812ba2a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -210,12 +228,56 @@
                 },
                 {
                     "name": "",
-                    "id": "111608e2-471f-4cac-8472-932d81497de3",
-                    "path": "<Keyboard>/rightCtrl",
+                    "id": "2d3f6f86-71b1-496b-a32a-992dc7be6081",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "577bed1b-ca4c-4d78-8a8e-bceaf1919d84",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart level",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d1fa6a5-0966-4fec-aa38-44c8d8037b7c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart level",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aaa8f538-a260-46b5-9184-5464f34439a3",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trumpet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71c08b30-9fbf-4c58-8760-e37872c4ca18",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trumpet",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

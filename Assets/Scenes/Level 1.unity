@@ -4338,7 +4338,7 @@ MonoBehaviour:
   text:
   - Use the arrow keys or right stick to control your trunk
   - Hold the right big shoulder button to grab
-  - You can also use the right control key
+  - You can also use the control key
   time: 5
 --- !u!61 &1164691200
 BoxCollider2D:
