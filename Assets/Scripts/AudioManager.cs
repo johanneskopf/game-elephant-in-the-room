@@ -61,17 +61,17 @@ public class AudioManager : MonoBehaviour
 
     public void PlayElevatorOpen()
     {
-        _soundSource.PlayOneShot(_elevatorOpen);
+        _soundSource.PlayOneShot(_elevatorOpen, 0.5f);
     }
 
     public void PlayElevatorDing()
     {
-        _soundSource.PlayOneShot(_elevatorDing);
+        _soundSource.PlayOneShot(_elevatorDing, 0.3f);
     }
 
     public void PlayElevatorClose()
     {
-        _soundSource.PlayOneShot(_elevatorClose);
+        _soundSource.PlayOneShot(_elevatorClose, 0.5f);
     }
 
     public void PlayButtonFocus()
