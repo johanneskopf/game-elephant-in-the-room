@@ -146,6 +146,4 @@ public class StartMenuController : MonoBehaviour
         StartCoroutine(SceneLoader.Instance.QuitGame());
         AudioManager.Instance.PlayButtonPress();
     }
-
-
 }

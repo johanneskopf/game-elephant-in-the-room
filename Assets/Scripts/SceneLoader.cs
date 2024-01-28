@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,20 +40,22 @@ public class SceneLoader : MonoBehaviour
     }
 
 
-    public IEnumerator LoadScene(int levelID)
+    public IEnumerator LoadScene(int sceneBuildIndex)
     {
         StartLoadingScene?.Invoke();
         yield return StartCoroutine(_transitions.PlayClosingAnimationCR());
-        yield return StartCoroutine(LoadeSceneAsync(levelID));
+        yield return StartCoroutine(LoadSceneAsync(sceneBuildIndex));
         AudioManager.Instance.PlayElevatorDing();
         yield return new WaitForSeconds(_timeBetweenOpenClose);
         yield return StartCoroutine(_transitions.PlayOpeningAnimationCR());
         FinishedLoadingScene?.Invoke();
     }
 
-    private IEnumerator LoadeSceneAsync(int levelID)
+    private IEnumerator LoadSceneAsync(int sceneBuildIndex)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"Level {levelID}");
+        string pathToScene = SceneUtility.GetScenePathByBuildIndex(sceneBuildIndex);
+        string sceneName = System.IO.Path.GetFileNameWithoutExtension(pathToScene);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
@@ -63,9 +64,15 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadLevel(int levelID)
+    public IEnumerator LoadLevel(int sceneBuildIndex)
     {
-        yield return StartCoroutine(LoadScene(levelID));
+        yield return StartCoroutine(LoadScene(sceneBuildIndex));
+    }
+
+    public IEnumerator LoadLevel(string sceneName)
+    {
+        var scene = SceneManager.GetSceneByName(sceneName);
+        yield return StartCoroutine(LoadScene(scene.buildIndex));
     }
 
     public IEnumerator QuitGame()

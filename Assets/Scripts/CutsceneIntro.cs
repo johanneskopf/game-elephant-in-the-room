@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -225,6 +226,8 @@ public class CutsceneIntro : MonoBehaviour
 
                     // TODO insert level start!
                     Debug.Log("Finished all parts");
+
+                    StartCoroutine(LoadFirstLevel());
                 }
                 SetCanvasActive(false, dialogCanvasGroup);
                 return;
@@ -236,6 +239,11 @@ public class CutsceneIntro : MonoBehaviour
             WaitsForAccept = true;
         });
         root.Append(sequenceDialog);
+    }
+
+    private IEnumerator LoadFirstLevel()
+    {
+        yield return SceneLoader.Instance.LoadLevel(2);
     }
 
     void IncreaseMaxVisibleChars(TMPro.TextMeshProUGUI textTMP, int maxVisisbleCharacters)
