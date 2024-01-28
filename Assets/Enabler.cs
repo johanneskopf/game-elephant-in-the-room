@@ -33,7 +33,6 @@ public class Enabler : MonoBehaviour
         if (active && activeOffsetDistance > 0)
         {
             var move = Mathf.Min((Time.deltaTime / animationTime) * Mathf.Abs(offsetDistance), activeOffsetDistance);
-            Debug.Log("Moving by " + move);
             activeOffsetDistance -= move;
 
             var pos = transform.position;
