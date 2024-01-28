@@ -142,7 +142,9 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
 
     public void OnCollisionEnter2DEvent(Collision2D collision)
     {
-        if (grabbedObject == null && grabbing && collision.rigidbody.gameObject.CompareTag("Grabbable"))
+        if (grabbedObject == null && grabbing &&
+            collision.rigidbody != null && collision.rigidbody.gameObject != null &&
+            collision.rigidbody.gameObject.CompareTag("Grabbable"))
         {
             Grab(collision.rigidbody);
         }
@@ -158,7 +160,7 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
 
     private void Flip()
     {
-        if (grabbedObject != null) return;
+        if (grabbing) return;
 
         gameObject.transform.Find("Model").transform.Rotate(0, 180, 0);
 

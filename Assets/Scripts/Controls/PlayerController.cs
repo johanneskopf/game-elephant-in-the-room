@@ -9,7 +9,7 @@ namespace Controls
 
         private Vector2 _movementInput = Vector2.zero;
         private bool _isJumping = false;
-        private bool jumpDisabled = false;
+        public int touchingGround = 0;
 
         public TrunkHaver trunkHaver;
         public float jumpStrength = 50f;
@@ -42,19 +42,14 @@ namespace Controls
 
             if (_isJumping)
             {
-                if (!jumpDisabled)
+                var rb = GetComponent<Rigidbody2D>();
+                if (rb.velocityY <= 0 && touchingGround > 0)
                 {
                     GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
-                    jumpDisabled = true;
                 }
 
                 _isJumping = false;
             }
-        }
-
-        public void EnableJumpingAgain()
-        {
-            jumpDisabled = false;
         }
     }
 }

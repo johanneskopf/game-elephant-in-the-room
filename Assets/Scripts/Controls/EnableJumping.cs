@@ -8,8 +8,17 @@ namespace Controls
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (playerController != null)
-                playerController.EnableJumpingAgain();
+            playerController.touchingGround++;
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            playerController.touchingGround--;
+            if (playerController.touchingGround < 0)
+            {
+                Debug.LogError("Somehow touching negative ground. Fixing...");
+                playerController.touchingGround = 0;
+            }
         }
     }
 }
