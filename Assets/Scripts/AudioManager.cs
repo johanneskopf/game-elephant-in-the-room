@@ -35,6 +35,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     private AudioClip _buttonPress;
+    
+    [SerializeField]
+    private AudioClip _text;
 
     private void Awake()
     {
@@ -87,5 +90,10 @@ public class AudioManager : MonoBehaviour
     public void PlayElephantTrumpet()
     {
         _soundSource.PlayOneShot(_elephantTrumpet01);
+    }
+
+    public void PlayTextSound()
+    {
+        _soundSource.PlayOneShot(_text);
     }
 }
