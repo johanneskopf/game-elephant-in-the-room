@@ -124,10 +124,12 @@ public class CutsceneIntro : MonoBehaviour
     void Part3()
     {
         Sequence sequenceElephantsGoToSkyscraper = DOTween.Sequence();
-        sequenceElephantsGoToSkyscraper.Append(elephant1.transform.DOMoveX(3.33f, 2))
+        sequenceElephantsGoToSkyscraper.Append(elephant1.transform.DORotate(new Vector3(0f, 270f, 0f), 0.5f))
+        .Append(elephant1.transform.DOMoveX(3.33f, 2))
         .Join(elephant1Placeholder.transform.DOMoveX(3.33f, 2))
         .Join(elephant2Placeholder.transform.DOMoveX(4.33f, 5))
         .Join(elephant2.transform.DOMoveX(4.33f, 5))
+        .Join(elephant1.transform.DORotate(new Vector3(0f, 90f, 0f), 5))
         .Append(elephant1Placeholder.transform.DOMoveY(10.0f, 3))
         .Join(elephant2Placeholder.transform.DOMoveY(10.0f, 3))
         .AppendInterval(2)

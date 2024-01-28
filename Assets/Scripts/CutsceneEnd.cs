@@ -69,10 +69,14 @@ public class CutsceneEnd : MonoBehaviour
         //SetGOActive(false, elephant2RendererGO);
         Sequence rootSequence = DOTween.Sequence();
 
+        elephant2.transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+
         // append elephant meet
         rootSequence.Append(elephant1.transform.DOMoveX(7.35f, 3))
           .Join(elephant1Placeholder.transform.DOMoveX(7.35f, 3))
           .Join(elephant2.transform.DOMoveX(8.6f, 3))
+          //.Join(elephant2.transform.DORotate(new Vector3(0f, 90f, 0f), 0.0f))
+          .Join(elephant2.transform.DORotate(new Vector3(0f, 270f, 0f), 3.0f))
           .Join(elephant2Placeholder.transform.DOMoveX(8.6f, 4.5f));
 
         // append dialog
