@@ -38,7 +38,7 @@ public class CutsceneIntro : MonoBehaviour
     };
 
     List<string> dialogLines3 = new List<string> {
-        "Russel: In this skyscraper, we find a glas of water, don't we?",
+        "Russel: In this skyscraper, we find a glass of water, don't we?",
         "Dussel: YES!",
         "Russel and Dussel go in..",
     };
