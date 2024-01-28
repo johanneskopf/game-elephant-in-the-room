@@ -55,6 +55,7 @@ MonoBehaviour:
   _buttonFocus: {fileID: 8300000, guid: aae25b98c1ce28747b607424c5375ad6, type: 3}
   _buttonPress: {fileID: 8300000, guid: 460f5f40951610c479c5b8031cf7b7ca, type: 3}
   _text: {fileID: 8300000, guid: 7d4af8eb8557cda4b94f738003528301, type: 3}
+  _backgroundMusic: {fileID: 8300000, guid: 8d623cb07917cb54dab3d1391bf4e57a, type: 3}
 --- !u!82 &8030822241972684643
 AudioSource:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0

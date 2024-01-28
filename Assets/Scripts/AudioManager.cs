@@ -39,6 +39,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioClip _text;
 
+    [SerializeField]
+    private AudioClip _backgroundMusic;
+
     private void Awake()
     {
         if (Instance != null)
@@ -48,6 +51,8 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        PlayBackgroundMusic();
     }
 
     internal void ToggleMusic(bool musicIsOn)
@@ -95,5 +100,12 @@ public class AudioManager : MonoBehaviour
     public void PlayTextSound()
     {
         _soundSource.PlayOneShot(_text);
+    }
+
+    public void PlayBackgroundMusic()
+    {
+        _musicSource.clip = _backgroundMusic;
+        _musicSource.loop = true;
+        _musicSource.Play();
     }
 }
