@@ -19,7 +19,7 @@ public class CutsceneIntro : MonoBehaviour
     private int CurrentDialogLine = 0;
 
     List<string> dialogLines = new List<string> {
-        "Russel: Hey Dussel, let's play a quick round truth or dare.",
+        "Russel: Hey Dussel, let's play a quick round of truth or dare.",
         "Dussel: Okay! Truth or dare?",
         "Russel: Dare.",
         "Dussel trumpets, then silence, then an idea!",
@@ -40,7 +40,7 @@ public class CutsceneIntro : MonoBehaviour
     };
 
     List<string> dialogLines3 = new List<string> {
-        "Russel: In this skyscraper, we find a glass of water, don't we?",
+        "Russel: In this skyscraper, we will find a glass of water, won't we?",
         "Dussel trumpets.",
         "Dussel: YES!",
         "Russel and Dussel go in..",
