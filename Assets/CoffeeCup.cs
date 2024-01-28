@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoffeeCup : MonoBehaviour
 {
-    private bool filled = false;
+    public bool filled = false;
 
     public Mesh filledCoffeeMesh;
 
