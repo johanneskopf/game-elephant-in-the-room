@@ -1639,7 +1639,7 @@ GameObject:
   - component: {fileID: 785593711253509300}
   m_Layer: 6
   m_Name: PlayableElephant
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1836,6 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeedModifier: 6
+  touchingGround: 0
   trunkHaver: {fileID: 3024715190336843941}
   jumpStrength: 50
 --- !u!50 &785593711253509300
@@ -4914,7 +4915,7 @@ GameObject:
   - component: {fileID: 4330929769095167504}
   m_Layer: 7
   m_Name: Trunk5
-  m_TagString: Untagged
+  m_TagString: TrunkEnd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
