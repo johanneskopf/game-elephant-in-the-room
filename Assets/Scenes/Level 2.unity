@@ -1040,7 +1040,7 @@ PrefabInstance:
     - target: {fileID: 544107990110791651, guid: c7b6a8e6f8622fa4498e6ef27f99b5ae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 16.4
       objectReference: {fileID: 0}
     - target: {fileID: 544107990110791651, guid: c7b6a8e6f8622fa4498e6ef27f99b5ae,
         type: 3}
@@ -1095,7 +1095,7 @@ PrefabInstance:
     - target: {fileID: 926516365062085653, guid: c7b6a8e6f8622fa4498e6ef27f99b5ae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.49
+      value: -2.4899998
       objectReference: {fileID: 0}
     - target: {fileID: 926516365062085653, guid: c7b6a8e6f8622fa4498e6ef27f99b5ae,
         type: 3}
@@ -1110,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 1591111667103531263, guid: c7b6a8e6f8622fa4498e6ef27f99b5ae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.49
+      value: -2.4899998
       objectReference: {fileID: 0}
     - target: {fileID: 1591111667103531263, guid: c7b6a8e6f8622fa4498e6ef27f99b5ae,
         type: 3}
@@ -1131,7 +1131,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'PlayerRenderer.Array.data[0]'
       value: 
-      objectReference: {fileID: 1602099302}
+      objectReference: {fileID: 1380765971}
     - target: {fileID: 3504443977662398684, guid: c7b6a8e6f8622fa4498e6ef27f99b5ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3447,6 +3447,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 867697662}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &1380765971 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7243523540390902813, guid: 218957abfdb6a2348bffa12fa0280790,
+    type: 3}
+  m_PrefabInstance: {fileID: 2022349344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1426759460
 Mesh:
   m_ObjectHideFlags: 0
@@ -3869,12 +3875,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.58934355, y: 0.6702311}
   m_EdgeRadius: 0
---- !u!23 &1602099302 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9109145785338064732, guid: 218957abfdb6a2348bffa12fa0280790,
-    type: 3}
-  m_PrefabInstance: {fileID: 2022349344}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1607847049
 Mesh:
   m_ObjectHideFlags: 0

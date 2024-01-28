@@ -45,6 +45,7 @@ namespace Controls
                 var rb = GetComponent<Rigidbody2D>();
                 if (touchingGround > 0)
                 {
+                    rb.velocityY = 0;
                     GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
                 }
 

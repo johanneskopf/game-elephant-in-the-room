@@ -32,7 +32,6 @@ public class TrunkHaver : MonoBehaviour, ICollider2DListener
         BoxCollider2D prev = null;
         foreach (var boxCollider2D in _trunkElements)
         {
-            Debug.Log("Adding hinge joint to " + boxCollider2D.gameObject.name);
             var hinge = boxCollider2D.gameObject.AddComponent<HingeJoint2D>();
             if (prev != null)
             {
