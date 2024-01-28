@@ -3822,7 +3822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8248561846e1fc6439da4626bfe335db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 2080704899}
+  steamSystem: {fileID: 2080704899}
 --- !u!61 &1540915605
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5528,7 +5528,7 @@ GameObject:
   - component: {fileID: 2080704899}
   - component: {fileID: 2080704900}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: SteamSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10825,6 +10825,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 185742915}
+    - target: {fileID: 7601072261047652505, guid: d7e928a2cec612a4e8129d2c856d49d0,
+        type: 3}
+      propertyPath: levelToLoad
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8645441747624634070, guid: d7e928a2cec612a4e8129d2c856d49d0,
         type: 3}
       propertyPath: m_LocalPosition.x

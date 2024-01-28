@@ -7,11 +7,11 @@ public class CoffeeFiller : MonoBehaviour
 {
     private float steamLeft = 0;
 
-    public ParticleSystem particleSystem;
+    public ParticleSystem steamSystem;
 
     void Start()
     {
-        particleSystem.Stop();
+        steamSystem.Stop();
     }
 
     private void Update()
@@ -21,7 +21,7 @@ public class CoffeeFiller : MonoBehaviour
             steamLeft -= Time.deltaTime;
             if (steamLeft <= 0)
             {
-                particleSystem.Stop();
+                steamSystem.Stop();
             }
         }
     }
@@ -33,7 +33,7 @@ public class CoffeeFiller : MonoBehaviour
         {
             coffeeCup.Fill();
             steamLeft = 0.5f;
-            particleSystem.Play();
+            steamSystem.Play();
         }
     }
 }
